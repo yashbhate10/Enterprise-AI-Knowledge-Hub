@@ -1,0 +1,52 @@
+:root {
+  --ink: #14231C;
+  --ink-soft: #1D3126;
+  --paper: #F6F2E9;
+  --paper-dim: #EDE7D8;
+  --brass: #B08D57;
+  --brass-bright: #C9A45E;
+  --slate: #4A5750;
+  --rust: #A8432F;
+  --line: rgba(20, 35, 28, 0.12);
+  --line-on-ink: rgba(246, 242, 233, 0.16);
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

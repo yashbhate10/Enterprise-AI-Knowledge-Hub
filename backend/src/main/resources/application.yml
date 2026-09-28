@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: knowledgehub
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/knowledge_hub
+    username: hub_admin
+    password: change_me_dev_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # 'validate' checks entities match existing tables without altering them.
+      # Since schema.sql already owns table creation, never use 'update' or 'create' here.
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+app:
+  jwt:
+    # Dev-only secret. Move to an environment variable before anything resembling production.
+    secret: "dev-only-change-this-to-a-long-random-secret-before-any-real-use-CHANGE-ME"
+    expiration-ms: 86400000   # 24 hours

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ai-knowledge-hub-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hub_admin
+      POSTGRES_PASSWORD: change_me_dev_password
+      POSTGRES_DB: knowledge_hub
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ../database/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql
+
+  # backend, frontend, and ai-service will be added here in later phases
+  # once their Dockerfiles exist, e.g.:
+  #
+  # backend:
+  #   build:
+  #     context: ../backend
+  #     dockerfile: ../docker/backend.Dockerfile
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "8080:8080"
+
+volumes:
+  pgdata:
